@@ -1,0 +1,44 @@
+<section>
+    <div class="container row">
+        <div style="width: 50%; float: left;">
+            <form action="/category" method="POST">
+                <label>Category</label><br>
+                
+                <label>Category name </label><br>
+                <input type="text" required name="name"><br>
+                <label>Category url </label><br>
+                <input type="text" required name="url"><br><br>
+                <button type="submit" class="btn btn-success">Add categories</button>
+
+            </form>
+        </div>
+        <div style="width: 50%; float: left;">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">url starts</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each categories}}
+                    <tr>
+                        <td>
+                            {{name}}
+                        </td>
+                        <td>{{url}}</td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+
+
+
+
+            </table>
+        </div>
+
+    </div>
+
+</section>

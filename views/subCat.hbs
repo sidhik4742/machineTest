@@ -1,0 +1,57 @@
+<section>
+    <div class="container row">
+        <div style="width: 50%; float: left;">
+            <form action="/subcategory" method="POST">
+                <label>Sub category</label><br>
+
+                <label>SubCategory name </label><br>
+                <input type="text" required name="name"><br>
+                <label>SubCategory url </label><br>
+                <input type="text" required name="url"><br><br>
+                <button type="submit" class="btn btn-success">Add Subcategories</button>
+
+            </form>
+        </div>
+        <div style="width: 50%; float: left;">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+
+                        <th scope="col">Sub category</th>
+                        <th scope="col">url starts</th>
+                    </tr>
+                    {{#each categories}}
+
+
+
+                    <tr>
+                        <td>
+                            {{name}}
+                        </td>
+                        <td>
+                            {{url}}
+                        </td>
+                    </tr>
+
+                    {{/each}}
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+
+
+
+            </table>
+        </div>
+
+    </div>
+
+</section>
