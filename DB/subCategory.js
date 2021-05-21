@@ -50,3 +50,21 @@ module.exports.findSubCategory = (category) => {
     })
     
 }
+
+module.exports.updateSubCat = (id, category) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let updatedCat = '/' + category;
+        const db = await getConnection();
+        const collection = db.collection(COLLECTION.sub_category);
+        const response = await collection.findOneAndUpdate(
+          {_id: ObjectId(id)},
+          {$set: {url: updatedCat}}
+        );
+        console.log(response,"response");
+        return resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };

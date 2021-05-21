@@ -88,3 +88,55 @@ module.exports.updateProduct = (id, subCat) => {
     }
   });
 };
+
+module.exports.updateCatFromProduct = (id, cate) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const db = await getConnection();
+      const collection = db.collection(COLLECTION.product);
+      //console.log(collection,"collection");
+      const response = await collection.findOne({categoryId: ObjectId(id)});
+      console.log(response, 'res');
+
+      var newUrl = response.url.split('/');
+      console.log(newUrl);
+      newUrl.splice(0, 1, cate);
+      newUrl = newUrl.join('/');
+      console.log(newUrl);
+      const result = await collection.findOneAndUpdate(
+        {categoryId: ObjectId(id)},
+        {$set: {url: newUrl}}
+      );
+      console.log(result, 'res');
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+module.exports.updateSubCatFromProduct = (id, cate) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await getConnection();
+        const collection = db.collection(COLLECTION.product);
+        //console.log(collection,"collection");
+        const response = await collection.findOne({subCategoryId: ObjectId(id)});
+        console.log(response, 'res');
+  
+        var newUrl = response.url.split('/');
+        console.log(newUrl);
+        newUrl.splice(1, 1, cate);
+        newUrl = newUrl.join('/');
+        console.log(newUrl);
+        const result = await collection.findOneAndUpdate(
+          {subCategoryId: ObjectId(id)},
+          {$set: {url: newUrl}}
+        );
+        console.log(result, 'res');
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };

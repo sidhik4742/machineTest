@@ -19,10 +19,9 @@
 
                         <th scope="col">Sub category</th>
                         <th scope="col">url starts</th>
+                        <th scope="col">Action</th>
                     </tr>
                     {{#each categories}}
-
-
 
                     <tr>
                         <td>
@@ -31,6 +30,7 @@
                         <td>
                             {{url}}
                         </td>
+                        <td> <a href="/updatesubcat/{{_id}}">Edit</a></td>
                     </tr>
 
                     {{/each}}
@@ -45,10 +45,6 @@
                     </tr>
 
                 </tbody>
-
-
-
-
             </table>
         </div>
 

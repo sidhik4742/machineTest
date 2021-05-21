@@ -10,8 +10,16 @@ const homeController = require('../Controllers/index')
 
 router.get('/', homeController.index);
 router.post('/category', homeController.addCategory);
+
+router.get('/updatecat/:id', homeController.updateCatView);
+router.post('/updatecat', homeController.updateCat);
+
+
 router.get('/subcategory', homeController.subCategoryIndex);
 router.post('/subcategory', homeController.addSubCategory);
+
+router.get('/updatesubcat/:id', homeController.updateSubCatView);
+router.post('/updatesubcat', homeController.updateSubCat);
 
 router.get('/product', homeController.productIndex);
 router.post('/addProduct', homeController.addProduct);

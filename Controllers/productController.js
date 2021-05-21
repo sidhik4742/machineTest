@@ -33,6 +33,8 @@ module.exports.addProduct = async (req, res) => {
     res.redirect('/product');
   } else {
     let data = {
+      categoryId: findedCategory._id,
+      subCategoryId: findedSubCategory._id,
       name: product,
       url: `${findedCategory.url}${
         findedSubCategory.url
@@ -57,7 +59,10 @@ module.exports.getProduct = async (req, res) => {
 
   console.log(params['0']);
 
-  let result = await productHandler.getProduct(params['0']);
+  let newUrl = params["0"].substring(1)
+  console.log(newUrl);
+
+  let result = await productHandler.getProduct(newUrl);
 
   console.log(result);
   res.render('product_view', {product: result});

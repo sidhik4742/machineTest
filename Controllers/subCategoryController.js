@@ -1,4 +1,5 @@
 let subCategoryHandler = require('../DB/subCategory');
+let productHandler = require("../DB/product")
 
 // let categories = [{name: 'Safsdf', url: 'afsdfasdfas'}];
 
@@ -34,5 +35,35 @@ module.exports.addSubCategory = async (req, res) => {
     res.redirect('/subcategory');
   }
 };
+
+module.exports.updateSubCatView = async (req, res) => {
+    console.log('update category view');
+  
+    let id = req.params.id;
+  
+    console.log(id);
+  
+    // let categories = await categoryHandler.findAllCategory();
+    //   console.log(categories);
+  
+    res.render('updateSubCat', {id: id});
+  };
+  
+  module.exports.updateSubCat = async (req, res) => {
+    console.log('update category');
+  
+    let {id, category} = req.body;
+  
+    console.log(id, category);
+    category = category.toLowerCase();
+  
+    await subCategoryHandler.updateSubCat(id, category);
+    await productHandler.updateSubCatFromProduct(id, category);
+  
+    // console.log();
+  
+    res.redirect('/subcategory');
+  };
+  
 
 

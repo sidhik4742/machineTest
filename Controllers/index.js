@@ -1,5 +1,15 @@
-const {index, addCategory} = require('./homeController');
-const {subCategoryIndex, addSubCategory} = require('./subCategoryController');
+const {
+  index,
+  addCategory,
+  updateCatView,
+  updateCat,
+} = require('./homeController');
+const {
+  subCategoryIndex,
+  addSubCategory,
+  updateSubCatView,
+  updateSubCat,
+} = require('./subCategoryController');
 const {
   productIndex,
   addProduct,
@@ -18,4 +28,8 @@ module.exports = {
   getProduct,
   addMoreSubView,
   addMoresubCat,
+  updateCatView,
+  updateCat,
+  updateSubCatView,
+  updateSubCat,
 };
